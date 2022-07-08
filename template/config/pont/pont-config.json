@@ -1,0 +1,16 @@
+{
+  "templatePath": "src/pont/pontTemplate",
+  "outDir": "./src/services",
+  "prettierConfig": "eslint --fix",
+  "templateType": "fetch",
+  "mocks": {
+    "enable": true
+  },
+  "origins": [
+    {
+      "originUrl": "https://petstore.swagger.io/v2/swagger.json",
+      "usingMultipleOrigins": true,
+      "name": "swagger"
+    }
+  ]
+}
