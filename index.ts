@@ -52,7 +52,9 @@ async function init() {
   // --typescript / --ts
   // --jsx
   // --router / --vue-router
+  // --router-generator
   // --pinia
+  // --pont
   // --with-tests / --tests (equals to `--vitest --cypress`)
   // --vitest
   // --cypress
@@ -95,7 +97,9 @@ async function init() {
     needsTypeScript?: boolean
     needsJsx?: boolean
     needsRouter?: boolean
+    needsRouterGenerator?: boolean
     needsPinia?: boolean
+    needsPont?: boolean
     needsVitest?: boolean
     needsCypress?: boolean
     needsEslint?: boolean
@@ -174,9 +178,25 @@ async function init() {
           inactive: 'No'
         },
         {
+          name: 'needsRouterGenerator',
+          type: () => (isFeatureFlagsUsed ? null : 'toggle'),
+          message: 'Add Vue Router Generator for routes generate?',
+          initial: false,
+          active: 'Yes',
+          inactive: 'No'
+        },
+        {
           name: 'needsPinia',
           type: () => (isFeatureFlagsUsed ? null : 'toggle'),
           message: 'Add Pinia for state management?',
+          initial: false,
+          active: 'Yes',
+          inactive: 'No'
+        },
+        {
+          name: 'needsPont',
+          type: () => (isFeatureFlagsUsed ? null : 'toggle'),
+          message: 'Add Pont for API management and API file generate?',
           initial: false,
           active: 'Yes',
           inactive: 'No'
@@ -242,7 +262,9 @@ async function init() {
     needsJsx = argv.jsx,
     needsTypeScript = argv.typescript,
     needsRouter = argv.router,
+    needsRouterGenerator = argv.routerGenerator,
     needsPinia = argv.pinia,
+    needsPont = argv.pont,
     needsCypress = argv.cypress || argv.tests,
     needsVitest = argv.vitest || argv.tests,
     needsEslint = argv.eslint || argv['eslint-with-prettier'],
@@ -282,8 +304,14 @@ async function init() {
   if (needsRouter) {
     render('config/router')
   }
+  if (needsRouterGenerator) {
+    render('config/routerGenerator')
+  }
   if (needsPinia) {
     render('config/pinia')
+  }
+  if (needsPont) {
+    render('config/pont')
   }
   if (needsVitest) {
     render('config/vitest')
@@ -319,7 +347,8 @@ async function init() {
   // prettier-ignore
   const codeTemplate =
     (needsTypeScript ? 'typescript-' : '') +
-    (needsRouter ? 'router' : 'default')
+    (needsRouter ? needsRouterGenerator ? 'router_generator' : 'router' : 'default') + 
+    (needsPont ? '-pont' : '')
   render(`code/${codeTemplate}`)
 
   // Render entry file (main.js/ts).
