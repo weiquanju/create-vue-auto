@@ -1,10 +1,10 @@
 {
-  "name": "create-vue3",
+  "name": "create-vue-auto",
   "version": "1.0.0",
   "description": "An easy way to start a Vue project",
   "type": "module",
   "bin": {
-    "create-vue3": "outfile.cjs"
+    "create-vue-auto": "outfile.cjs"
   },
   "files": [
     "outfile.cjs",
@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/create-vue3.git"
+    "url": "git+https://github.com/weiquanju/create-vue-auto.git"
   },
   "keywords": [],
   "author": "Haoqun Jiang <haoqunjiang+npm@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/create-vue3/issues"
+    "url": "https://github.com/weiquanju/create-vue-auto/issues"
   },
-  "homepage": "https://github.com/vuejs/create-vue3#readme",
+  "homepage": "https://github.com/weiquanju/create-vue-auto#readme",
   "devDependencies": {
     "@types/eslint": "^8.4.3",
     "@types/prompts": "^2.0.14",
