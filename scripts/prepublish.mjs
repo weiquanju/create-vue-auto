@@ -1,7 +1,7 @@
 #!/usr/bin/env zx
 import 'zx/globals'
 
-// await $`pnpm build`
+await $`pnpm build`
 
 let { version } = JSON.parse(await fs.readFile('./package.json'))
 
